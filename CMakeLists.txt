@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+enable_language(C)
+enable_language(CXX)
+
 project("crosswindow-playground" VERSION 1.0.0.0 LANGUAGES C CXX)
 
 add_library(CrossWindow STATIC IMPORTED)
@@ -23,9 +26,9 @@ set_target_properties(CrossWindow PROPERTIES
   MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
 )
 
-target_include_directories(CrossWindow INTERFACE "${CrossWindow_ROOT}/src/CrossWindow")
+target_include_directories(CrossWindow INTERFACE "${CrossWindow_ROOT}/src")
 
-add_executable(${PROJECT_NAME} 
+add_executable(${PROJECT_NAME} WIN32
   "src/main.cpp"
 )
 
