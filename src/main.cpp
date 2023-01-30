@@ -1,4 +1,4 @@
-#define XWIN_WIN32
+#define XWIN_WIN32 1
 #include "CrossWindow.h"
 
 int main()
