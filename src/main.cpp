@@ -1,5 +1,5 @@
 #define XWIN_WIN32 1
-#include "CrossWindow.h"
+#include "CrossWindow/CrossWindow.h"
 
 int main()
 {
