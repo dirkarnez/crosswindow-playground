@@ -17,8 +17,8 @@ set_property(
 )
 
 set_target_properties(CrossWindow PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LOCATION_DEBUG "${CrossWindow_ROOT}/cmake-build/Release/CrossWindow.lib"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "${CrossWindow_ROOT}/cmake-build/Release/CrossWindow.lib"
 )
   
 set_target_properties(CrossWindow PROPERTIES
@@ -28,7 +28,7 @@ set_target_properties(CrossWindow PROPERTIES
 
 target_include_directories(CrossWindow INTERFACE "${CrossWindow_ROOT}/src")
 
-add_executable(${PROJECT_NAME} WIN32
+add_executable(${PROJECT_NAME}
   "src/main.cpp"
 )
 

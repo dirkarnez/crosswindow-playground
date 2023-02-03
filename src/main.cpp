@@ -3,47 +3,46 @@
 
 int main()
 {
-    // // 🖼️ Create Window Description
-    // xwin::WindowDesc windowDesc;
-    // windowDesc.name = "Test";
-    // windowDesc.title = "My Title";
-    // windowDesc.visible = true;
-    // windowDesc.width = 1280;
-    // windowDesc.height = 720;
+    // 🖼️ Create Window Description
+    xwin::WindowDesc windowDesc;
+    windowDesc.frame = false;
+    windowDesc.width = 1280;
+    windowDesc.height = 720;
 
-    // bool closed = false;
+    bool closed = false;
+    
+    // 🌟 Initialize
+    xwin::Window window;
+    xwin::EventQueue eventQueue;
 
-    // // 🌟 Initialize
-    // xwin::Window window;
-    // xwin::EventQueue eventQueue;
+    if (!window.create(windowDesc, eventQueue))
+    { return -1; }
 
-    // if (!window.create(windowDesc, eventQueue))
-    // { return; }
+    // 🏁 Engine loop
+    bool isRunning = true;
 
-    // // 🏁 Engine loop
-    // bool isRunning = true;
+    while (isRunning)
+    {
+        // ♻️ Update the event queue
+        eventQueue.update();
 
-    // while (isRunning)
-    // {
-    //     // ♻️ Update the event queue
-    //     eventQueue.update();
+        // 🎈 Iterate through that queue:
+        while (!eventQueue.empty())
+        {
+            const xwin::Event& event = eventQueue.front();
 
-    //     // 🎈 Iterate through that queue:
-    //     while (!eventQueue.empty())
-    //     {
-    //         const xwin::Event& event = eventQueue.front();
+            if (event.type == xwin::EventType::MouseMove)
+            {
+                const xwin::MouseMoveData mouse = event.data.mouseMove;
+            }
+            if (event.type == xwin::EventType::Close)
+            {
+                window.close();
+                isRunning = false;
+            }
 
-    //         if (event.type == xwin::EventType::MouseMove)
-    //         {
-    //             const xwin::MouseMoveData mouse = event.data.mouseMove;
-    //         }
-    //         if (event.type == xwin::EventType::Close)
-    //         {
-    //             window.close();
-    //             isRunning = false;
-    //         }
-
-    //         eventQueue.pop();
-    //     }
-    // }
+            eventQueue.pop();
+        }
+    }
+    return 0;
 }
